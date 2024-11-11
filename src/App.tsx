@@ -1,6 +1,6 @@
 import './App.css';
 import Card from './Components/Card';
-import data from './meta.json';
+import meta from './meta.json';
 interface FileInfo {
   file: string;
   title: string;
@@ -9,12 +9,11 @@ interface FileInfo {
 interface Data {
   [key: string]: FileInfo;
 }
+const data: Data = meta;
 function App() {
   return (
     <div className='app'>
-      {Object.keys(data as Data).map((id: string) => {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
+      {Object.keys(data).map((id: string) => {
         const info: FileInfo = data[id];
         return <Card image={`/photos/${info.file}`} title={info.title} />;
       })}
